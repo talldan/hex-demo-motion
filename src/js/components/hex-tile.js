@@ -20,11 +20,11 @@ export default class HexTile extends Component {
   render() {
     var color = '#888';
     var opacity = 1;
-    var selectedSize = this.props.size;
+    var selectedSize = 0;
     var zIndex = 0;
 
     if (this.state.isSelected) {
-      selectedSize = this.props.size * 0.6;
+      selectedSize = this.props.size * 0.4;
       color = '#aaa';
       zIndex = 1;
     }
@@ -37,7 +37,7 @@ export default class HexTile extends Component {
 
         { interpolated => (
           <Shape
-            d={ makeHexPath(interpolated.val, this.props.centre) }
+            d={ makeHexPath(this.props.size - interpolated.val, this.props.centre) }
             fill={ color }
             opacity= { opacity }
             onClick={ this.handleClick }
