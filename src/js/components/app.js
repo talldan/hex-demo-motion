@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Gameboard from './gameboard';
 
 export default class App extends Component {
   render() {
     return (
-      <h1>Hello, world.</h1>
+      <Gameboard />
     );
   }
 }
