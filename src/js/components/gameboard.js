@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Surface } from 'react-art';
 import HexGrid from './hex-grid';
 import { onResize, getDisplayDimensions } from '../utils/hex-layout';
+import { Spring } from 'react-motion';
 
 export default class Gameboard extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -28,9 +28,18 @@ export default class Gameboard extends Component {
 
   render() {
     return (
-      <Surface { ...this.state.dimensions } >
-        <HexGrid { ...this.state } />
-      </Surface>
+      <Spring
+        defaultValue={ { val: this.state.dimensions } }
+        endValue={ { val: this.state.dimensions, config: [100, 20] } }>
+
+        { interpolated => (
+          <Surface { ...this.state.dimensions } >
+            <HexGrid
+              dimensions={ interpolated.val }
+              size={ this.state.size } />
+          </Surface>) }
+
+      </Spring>
     );
   }
 }

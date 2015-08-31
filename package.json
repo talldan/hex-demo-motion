@@ -39,6 +39,7 @@
   "dependencies": {
     "lodash": "^3.10.1",
     "react": "^0.13.0",
-    "react-art": "^0.13.0"
+    "react-art": "^0.13.0",
+    "react-motion": "^0.2.7"
   }
 }
